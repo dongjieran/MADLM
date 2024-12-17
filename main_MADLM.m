@@ -18,13 +18,13 @@
 %
 % The specular component is calculated based on the specular reflection function (Bousquet et al., 2005).
 % Reference:
-% Bousquet, L., Lach¨¦rade, S., Jacquemoud, S., & Moya, I., 2005. Leaf BRDF measurements and model
+% Bousquet, L., LachÂ¨Â¦rade, S., Jacquemoud, S., & Moya, I., 2005. Leaf BRDF measurements and model
 % for specular and diffuse components differentiation. Remote Sensing of Environment, 98, 201-211.
 % _______________________________________________________________________
 % MADLM
 % Dongjie Ran, Zhongqiu Sun, Shan Lu, Kenji Omasa, 2024 
 % An advanced dorsiventral leaf radiative transfer model for simulating multi-angular
-% and spectral reflection: considering asymmetry of leaf internal and surface structure.Remote Sensing of Environment.
+% and spectral reflection: considering asymmetry of leaf internal and surface structure.Remote Sensing of Environment,2025, 318: 114531.
 % _______________________________________________________________________
 
 clc;clear;
@@ -48,10 +48,11 @@ load('leaf_parameter.txt'); % Leaf parameters
 % abdiff     = leaf_parameter(10); % 1/90 of diffusion angle of light for abaxial reflectance. 1 is full diffusion;
 %                                    0 is collimated light (no diffusion). This controls the differential scattering of adaxially
 %                                    and abaxially incident light.
-% uad        = leaf_parameter(11); % Roughness of adaxial leaf surface.
-% uab        = leaf_parameter(12); % Roughness of abaxial leaf surface.
-% fad        = leaf_parameter(13); % Fraction of refractive index for the adaxial leaf surface.
-% fab        = leaf_parameter(14); % Fraction of refractive index for the abaxial leaf surface.
+% mu         = leaf_parameter(11); % Roughness term for DHR simulation in the DLM
+% uad        = leaf_parameter(12); % Roughness of adaxial leaf surface.
+% uab        = leaf_parameter(13); % Roughness of abaxial leaf surface.
+% fad        = leaf_parameter(14); % Fraction of refractive index for the adaxial leaf surface.
+% fab        = leaf_parameter(15); % Fraction of refractive index for the abaxial leaf surface.
 
 % Load illumination-viewing geometry
 geo = load('geometry.txt'); % Load leaf parameter geometry
@@ -86,7 +87,7 @@ title('Multi-angular BRFs of the dorsiventral leaf')
 xlabel('Wavelength (nm)')
 ylabel('BRF')
 axis([400 2500 0 1.2]) % Set the axis limits
-legend({'Adaxial BRF (VZA=0¡ã)', 'Abaxial BRF (VZA=0¡ã)', 'Adaxial BRF (VZA=-30¡ã)', 'Abaxial BRF (VZA=-30¡ã)'})
+legend({'Adaxial BRF (VZA=0Â¡Ã£)', 'Abaxial BRF (VZA=0Â¡Ã£)', 'Adaxial BRF (VZA=-30Â¡Ã£)', 'Abaxial BRF (VZA=-30Â¡Ã£)'})
 
 %% Model inversion
 
